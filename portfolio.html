@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mechanical Systems Engineer | HVAC & Building Services Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* =============================================
+   DESIGN SYSTEM
+============================================= */
+:root {
+  --bg:          #080b0f;
+  --bg2:         #0e1318;
+  --bg3:         #131920;
+  --panel:       #111820;
+  --border:      rgba(255,255,255,0.07);
+  --border2:     rgba(0,220,180,0.25);
+  --accent:      #00dcb4;
+  --accent2:     #ff6b35;
+  --gold:        #c8a96e;
+  --text:        #e8edf5;
+  --dim:         #6b7d92;
+  --dim2:        #8899aa;
+  --safe:        clamp(1.5rem, 6vw, 7rem);
+  --r:           14px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+html { font-size: 16px; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Syne',sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* =============================================
+   CUSTOM CURSOR
+============================================= */
+.cursor{
+  position:fixed;width:10px;height:10px;background:var(--accent);
+  border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .2s;
+  mix-blend-mode:screen;
+}
+.cursor-ring{
+  position:fixed;width:36px;height:36px;border:1.5px solid var(--accent);
+  border-radius:50%;pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);transition:transform .12s ease,width .2s,height .2s;
+  opacity:0.5;
+}
+body:hover .cursor{opacity:1;}
+
+/* =============================================
+   NOISE OVERLAY
+============================================= */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9997;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4;
+}
+
+/* =============================================
+   NAV
+============================================= */
+nav{
+  position:fixed;top:0;width:100%;z-index:1000;
+  padding:1.4rem var(--safe);
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(8,11,15,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--accent);
+  letter-spacing:3px;text-transform:uppercase;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  text-decoration:none;color:var(--dim);font-size:0.75rem;
+  font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  transition:color .3s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--accent);transition:width .3s;
+}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{
+  font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);
+  border:1px solid var(--border2);padding:.55rem 1.2rem;border-radius:6px;
+  text-decoration:none;letter-spacing:2px;transition:.3s;
+}
+.nav-cta:hover{background:var(--accent);color:#000;}
+
+/* =============================================
+   HERO
+============================================= */
+#hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:5rem;padding:0 var(--safe);padding-top:120px;
+  position:relative;overflow:hidden;
+}
+#hero::after{
+  content:'';position:absolute;right:-20%;bottom:-10%;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,220,180,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-label{
+  font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);
+  letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-label::before{
+  content:'';display:block;width:40px;height:1px;background:var(--accent);
+}
+h1.hero-title{
+  font-family:'Instrument Serif',serif;font-size:clamp(3.2rem,7vw,6.5rem);
+  line-height:1.05;margin-bottom:1.8rem;font-weight:400;
+}
+h1.hero-title em{color:var(--accent);font-style:italic;}
+.hero-sub{
+  color:var(--dim2);font-size:1rem;line-height:1.8;max-width:420px;
+  margin-bottom:2.5rem;font-family:'DM Mono',monospace;font-size:0.82rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--accent);color:#000;border:none;
+  padding:.9rem 2.2rem;border-radius:8px;font-family:'Syne',sans-serif;
+  font-weight:700;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;transition:.3s;
+}
+.btn-primary:hover{background:#00f5c8;transform:translateY(-2px);}
+.btn-ghost{
+  background:transparent;color:var(--text);border:1px solid var(--border);
+  padding:.9rem 2.2rem;border-radius:8px;font-family:'Syne',sans-serif;
+  font-weight:600;font-size:0.8rem;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;transition:.3s;
+}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+/* Hero Stats */
+.hero-stats{
+  display:flex;gap:2.5rem;margin-top:3rem;
+  padding-top:2rem;border-top:1px solid var(--border);
+}
+.stat-num{
+  font-family:'Instrument Serif',serif;font-size:2.5rem;color:var(--accent);
+  line-height:1;
+}
+.stat-label{
+  font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--dim);
+  text-transform:uppercase;letter-spacing:2px;margin-top:4px;
+}
+
+/* Hero Image Side */
+.hero-visual{position:relative;display:flex;justify-content:flex-end;}
+.profile-frame{
+  position:relative;width:380px;height:480px;
+}
+.profile-frame img{
+  width:100%;height:100%;object-fit:cover;border-radius:20px;
+  border:1px solid var(--border);filter:grayscale(20%) contrast(1.05);
+}
+.profile-frame::before{
+  content:'';position:absolute;inset:-12px;border-radius:24px;
+  border:1px solid var(--border2);z-index:-1;
+}
+.profile-badge{
+  position:absolute;bottom:2rem;left:-3rem;
+  background:var(--panel);border:1px solid var(--border2);
+  border-radius:12px;padding:1rem 1.4rem;
+  font-family:'DM Mono',monospace;font-size:0.7rem;
+  backdrop-filter:blur(10px);
+}
+.badge-dot{
+  display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--accent);margin-right:8px;
+  animation:pulse-dot 2s infinite;
+}
+.badge-top{color:var(--accent);margin-bottom:4px;}
+.badge-bot{color:var(--dim);}
+
+@keyframes pulse-dot{
+  0%,100%{box-shadow:0 0 0 0 rgba(0,220,180,0.4);}
+  50%{box-shadow:0 0 0 6px rgba(0,220,180,0);}
+}
+
+/* Floating card */
+.float-card{
+  position:absolute;top:2rem;right:-2rem;
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;padding:1rem 1.2rem;
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--dim2);
+  width:180px;
+}
+.float-card-top{color:var(--gold);font-size:0.85rem;margin-bottom:6px;font-weight:500;}
+
+/* =============================================
+   SECTION HEADERS
+============================================= */
+.section-label{
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);
+  letter-spacing:4px;text-transform:uppercase;
+  display:flex;align-items:center;gap:1rem;margin-bottom:1rem;
+}
+.section-label::before{content:'';display:block;width:30px;height:1px;background:var(--accent);}
+.section-title{
+  font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:400;line-height:1.2;margin-bottom:3rem;
+}
+
+section{padding:120px var(--safe);}
+
+/* =============================================
+   ABOUT / EXPERTISE STRIP
+============================================= */
+#expertise{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.expertise-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;
+}
+.exp-item{
+  padding:3rem 2.5rem;border-right:1px solid var(--border);
+  transition:.3s;position:relative;overflow:hidden;
+}
+.exp-item:last-child{border-right:none;}
+.exp-item::before{
+  content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.exp-item:hover::before{transform:scaleX(1);}
+.exp-item:hover{background:var(--bg3);}
+.exp-icon{
+  width:48px;height:48px;border-radius:10px;background:rgba(0,220,180,0.1);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;
+}
+.exp-icon i{color:var(--accent);font-size:1.2rem;}
+.exp-item h3{font-size:1rem;margin-bottom:.7rem;font-weight:700;}
+.exp-item p{font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--dim2);line-height:1.7;}
+
+/* =============================================
+   SKILLS
+============================================= */
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.skills-intro{color:var(--dim2);line-height:1.8;font-size:0.95rem;}
+.skills-intro strong{color:var(--text);}
+
+.skill-list{display:flex;flex-direction:column;gap:1.2rem;}
+.skill-row{}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:.5rem;}
+.skill-name{font-size:0.8rem;font-weight:600;letter-spacing:1px;}
+.skill-pct{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);}
+.skill-bar{
+  height:3px;background:var(--border);border-radius:3px;overflow:hidden;
+}
+.skill-fill{
+  height:100%;background:linear-gradient(90deg,var(--accent),#00a884);
+  border-radius:3px;width:0;transition:width 1.4s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* Tools/badges */
+.tools-section{margin-top:4rem;}
+.tools-grid{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.5rem;}
+.tool-badge{
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--dim2);
+  border:1px solid var(--border);padding:.4rem .9rem;border-radius:20px;
+  letter-spacing:1px;transition:.3s;
+}
+.tool-badge:hover{border-color:var(--accent);color:var(--accent);}
+
+/* =============================================
+   PROJECTS
+============================================= */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.project-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--r);
+  overflow:hidden;transition:.4s;position:relative;cursor:pointer;
+}
+.project-card:hover{border-color:var(--accent);transform:translateY(-6px);}
+.project-img{
+  width:100%;height:220px;object-fit:cover;display:block;
+  filter:grayscale(30%) brightness(0.8);transition:.4s;
+  background:var(--bg3);
+}
+.project-card:hover .project-img{filter:grayscale(0%) brightness(0.9);}
+.project-img-placeholder{
+  width:100%;height:220px;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;color:var(--border);background:var(--bg3);
+  position:relative;overflow:hidden;
+}
+.project-img-placeholder::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,220,180,0.05),rgba(255,107,53,0.05));
+}
+.project-body{padding:1.8rem;}
+.project-tag{
+  font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:.8rem;
+}
+.project-body h3{font-size:1.1rem;margin-bottom:.8rem;font-weight:700;}
+.project-body p{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--dim2);line-height:1.8;}
+.project-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border);
+}
+.project-result{
+  font-family:'DM Mono',monospace;font-size:0.68rem;
+  color:var(--accent);display:flex;align-items:center;gap:.5rem;
+}
+.project-year{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--dim);}
+
+/* Wide card */
+.project-card.wide{grid-column:span 2;}
+.project-card.wide .project-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.project-card.wide .project-img-placeholder{height:100%;min-height:220px;}
+
+/* =============================================
+   EXPERIENCE TIMELINE
+============================================= */
+#experience{background:var(--bg2);}
+.timeline{position:relative;padding-left:2rem;margin-top:2rem;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border);
+}
+.tl-item{position:relative;padding-bottom:3.5rem;padding-left:2rem;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{
+  position:absolute;left:-2.4rem;top:5px;width:10px;height:10px;
+  border-radius:50%;background:var(--bg2);border:2px solid var(--border);
+  transition:.3s;
+}
+.tl-item:hover .tl-dot{border-color:var(--accent);background:var(--accent);}
+.tl-date{
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;
+}
+.tl-role{font-size:1.05rem;font-weight:700;margin-bottom:.3rem;}
+.tl-org{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--gold);margin-bottom:.8rem;}
+.tl-desc{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--dim2);line-height:1.8;max-width:580px;}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.tl-tag{
+  font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--dim);
+  border:1px solid var(--border);padding:.25rem .6rem;border-radius:4px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+
+/* =============================================
+   RESEARCH
+============================================= */
+.research-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;}
+.research-item{
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.8rem 2rem;display:flex;align-items:flex-start;gap:2rem;
+  transition:.3s;cursor:pointer;
+}
+.research-item:hover{border-color:var(--accent);transform:translateX(6px);}
+.research-num{
+  font-family:'Instrument Serif',serif;font-size:3rem;color:var(--border);
+  line-height:1;flex-shrink:0;min-width:60px;
+}
+.research-content h4{font-size:0.95rem;font-weight:700;margin-bottom:.5rem;}
+.research-venue{
+  font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold);
+  margin-bottom:.6rem;letter-spacing:1px;
+}
+.research-abstract{
+  font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--dim2);
+  line-height:1.7;
+}
+.research-ref{
+  font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--accent);
+  margin-top:.8rem;display:flex;align-items:center;gap:.4rem;
+}
+
+/* =============================================
+   CERTIFICATIONS
+============================================= */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:2rem;}
+.cert-card{
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.5rem;display:flex;align-items:center;gap:1.2rem;transition:.3s;
+}
+.cert-card:hover{border-color:var(--gold);}
+.cert-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(200,169,110,0.1);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.cert-icon i{color:var(--gold);font-size:1.1rem;}
+.cert-name{font-size:0.83rem;font-weight:700;margin-bottom:.3rem;}
+.cert-org{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--dim);letter-spacing:1px;}
+
+/* =============================================
+   CONTACT
+============================================= */
+#contact{background:var(--bg2);}
+.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;}
+.contact-info h2{margin-bottom:1rem;}
+.contact-info p{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--dim2);line-height:1.8;margin-bottom:2.5rem;}
+.contact-detail{display:flex;flex-direction:column;gap:1.2rem;}
+.contact-row{display:flex;align-items:center;gap:1rem;}
+.contact-row i{color:var(--accent);width:16px;}
+.contact-row a, .contact-row span{
+  font-family:'DM Mono',monospace;font-size:0.73rem;color:var(--dim2);
+  text-decoration:none;transition:.2s;
+}
+.contact-row a:hover{color:var(--accent);}
+
+/* Form */
+.contact-form{display:flex;flex-direction:column;gap:1.2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.form-group{display:flex;flex-direction:column;gap:.5rem;}
+.form-group label{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--dim);letter-spacing:2px;text-transform:uppercase;}
+.form-group input, .form-group textarea, .form-group select{
+  background:var(--panel);border:1px solid var(--border);
+  padding:.9rem 1.1rem;border-radius:8px;color:var(--text);
+  font-family:'DM Mono',monospace;font-size:0.78rem;transition:.3s;outline:none;
+  width:100%;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus{
+  border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,220,180,0.08);
+}
+.form-group select option{background:var(--panel);}
+.form-group textarea{resize:vertical;min-height:130px;}
+.submit-btn{
+  background:var(--accent);color:#000;border:none;
+  padding:1rem 2rem;border-radius:8px;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:0.8rem;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:.3s;
+  display:flex;align-items:center;justify-content:center;gap:.7rem;
+}
+.submit-btn:hover{background:#00f5c8;transform:translateY(-2px);}
+
+/* =============================================
+   FOOTER
+============================================= */
+footer{
+  padding:4rem var(--safe);border-top:1px solid var(--border);
+  background:var(--bg);display:flex;
+  justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;
+}
+.footer-logo{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:3px;}
+.footer-note{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--dim);letter-spacing:1px;}
+.social-row{display:flex;gap:1.2rem;}
+.social-row a{
+  width:38px;height:38px;border:1px solid var(--border);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--dim);font-size:0.9rem;text-decoration:none;transition:.3s;
+}
+.social-row a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+
+/* =============================================
+   ANIMATIONS
+============================================= */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+
+/* =============================================
+   MOBILE
+============================================= */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;padding-top:140px;gap:3rem;text-align:center;}
+  .hero-visual{justify-content:center;}
+  .profile-frame{width:280px;height:360px;}
+  .profile-badge{left:0;bottom:-1rem;}
+  .float-card{display:none;}
+  .hero-stats{justify-content:center;}
+  .skills-layout{grid-template-columns:1fr;}
+  .projects-grid{grid-template-columns:1fr;}
+  .project-card.wide{grid-column:span 1;}
+  .project-card.wide .project-inner{grid-template-columns:1fr;}
+  .contact-layout{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .expertise-grid{grid-template-columns:1fr 1fr;}
+  .exp-item{border-bottom:1px solid var(--border);border-right:none;}
+  .exp-item:nth-child(even){border-right:none;}
+  footer{flex-direction:column;text-align:center;}
+  nav .nav-links-wrap{display:none;}
+  .hero-btns{justify-content:center;}
+}
+
+@media(max-width:560px){
+  .expertise-grid{grid-template-columns:1fr;}
+  .hero-stats{flex-direction:column;gap:1rem;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">// MSE.PORTFOLIO</div>
+  <div class="nav-links-wrap">
+    <ul class="nav-links">
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <a href="resume.pdf" class="nav-cta">↓ CV.PDF</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-label reveal">Available for Consulting</div>
+    <h1 class="hero-title reveal">
+      Mechanical<br>
+      Systems<br>
+      <em>Engineer.</em>
+    </h1>
+    <p class="hero-sub reveal">
+      Specializing in high-performance HVAC, industrial refrigeration, and sustainable building services — delivering precision-engineered solutions across commercial and industrial scales.
+    </p>
+    <div class="hero-btns reveal">
+      <a href="#projects" class="btn-primary">View Case Studies</a>
+      <a href="#contact" class="btn-ghost">Start a Project</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div>
+        <div class="stat-num" data-target="8">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num" data-target="40">0</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num" data-target="4">0</div>
+        <div class="stat-label">Publications</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal">
+    <div class="profile-frame">
+      <img src="profile.jpg" alt="Mechanical Engineer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div style="display:none;width:100%;height:100%;background:var(--bg3);border-radius:20px;align-items:center;justify-content:center;font-size:5rem;">🔧</div>
+
+      <div class="profile-badge">
+        <div class="badge-top"><span class="badge-dot"></span>Available Now</div>
+        <div class="badge-bot">HVAC & MEP Consulting</div>
+      </div>
+
+      <div class="float-card">
+        <div class="float-card-top">🏆 2024 Award</div>
+        Innovative Thermal Solution — Green Building Summit
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE STRIP -->
+<section id="expertise" style="padding:0;min-height:unset;">
+  <div class="expertise-grid">
+    <div class="exp-item reveal">
+      <div class="exp-icon"><i class="fas fa-wind"></i></div>
+      <h3>HVAC Engineering</h3>
+      <p>Full-cycle design from load analysis to commissioning — VRF, chilled-water, AHU systems, and district cooling networks.</p>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-icon"><i class="fas fa-snowflake"></i></div>
+      <h3>Industrial Refrigeration</h3>
+      <p>Eco-refrigerant cycle design, chiller plant optimization, cold chain logistics, and food-grade facility compliance.</p>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-icon"><i class="fas fa-fire-flame-curved"></i></div>
+      <h3>Building Services</h3>
+      <p>Integrated MEP coordination — fire suppression, plumbing, drainage, and BMS automation for smart buildings.</p>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-icon"><i class="fas fa-leaf"></i></div>
+      <h3>Sustainable Design</h3>
+      <p>Net-zero aligned solutions, LEED documentation, energy benchmarking, and lifecycle carbon analysis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">02 / Capabilities</div>
+  <h2 class="section-title reveal">Technical <em style="font-style:italic;color:var(--accent);">Proficiency</em></h2>
+
+  <div class="skills-layout">
+    <div>
+      <p class="skills-intro reveal">
+        Over <strong>8 years</strong> of applied engineering experience across commercial towers, healthcare facilities, industrial plants, and green building retrofits. Comfortable leading projects from <strong>concept through commissioning</strong>.
+      </p>
+      <div class="tools-section reveal">
+        <div class="section-label" style="margin-bottom:1rem;">Software & Tools</div>
+        <div class="tools-grid">
+          <span class="tool-badge">Revit MEP</span>
+          <span class="tool-badge">AutoCAD 3D</span>
+          <span class="tool-badge">SolidWorks</span>
+          <span class="tool-badge">HAP</span>
+          <span class="tool-badge">Ansys Fluent</span>
+          <span class="tool-badge">EnergyPlus</span>
+          <span class="tool-badge">TRACE 700</span>
+          <span class="tool-badge">eQUEST</span>
+          <span class="tool-badge">BIM 360</span>
+          <span class="tool-badge">MATLAB</span>
+          <span class="tool-badge">MS Project</span>
+          <span class="tool-badge">Python</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-list" id="skillBars">
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">HVAC System Design</span><span class="skill-pct">95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">CFD Simulation (Fluent)</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Energy Modeling & Analysis</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">BIM / Revit MEP</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Industrial Refrigeration</span><span class="skill-pct">80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-header"><span class="skill-name">Project & Team Management</span><span class="skill-pct">82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg2);">
+  <div class="section-label reveal">03 / Work</div>
+  <h2 class="section-title reveal">Case Studies &<br><em style="font-style:italic;color:var(--accent);">Achievements</em></h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card wide reveal">
+      <div class="project-inner">
+        <div class="project-img-placeholder">
+          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="40" width="100" height="60" rx="4" stroke="rgba(0,220,180,0.3)" stroke-width="1.5" fill="none"/>
+            <line x1="10" y1="40" x2="110" y2="40" stroke="rgba(0,220,180,0.3)" stroke-width="1.5"/>
+            <rect x="20" y="50" width="18" height="18" rx="2" fill="rgba(0,220,180,0.08)" stroke="rgba(0,220,180,0.3)" stroke-width="1"/>
+            <rect x="50" y="50" width="18" height="18" rx="2" fill="rgba(0,220,180,0.08)" stroke="rgba(0,220,180,0.3)" stroke-width="1"/>
+            <rect x="80" y="50" width="18" height="18" rx="2" fill="rgba(0,220,180,0.08)" stroke="rgba(0,220,180,0.3)" stroke-width="1"/>
+            <line x1="60" y1="40" x2="60" y2="20" stroke="rgba(0,220,180,0.3)" stroke-width="1"/>
+            <circle cx="60" cy="15" r="5" stroke="rgba(0,220,180,0.4)" stroke-width="1.5" fill="none"/>
+            <line x1="30" y1="68" x2="30" y2="100" stroke="rgba(0,220,180,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Featured · PROJECT_01</div>
+          <h3>15-Story Commercial Tower — VRF HVAC Design</h3>
+          <p>Designed a full Variable Refrigerant Flow (VRF) climate control system for a 35,000 m² commercial high-rise. Coordinated MEP disciplines using BIM, reducing clashes by 60% and achieving an 18% energy efficiency gain over ASHRAE baseline. System commissioned on schedule with zero post-handover defects.</p>
+          <div class="project-meta">
+            <div class="project-result"><i class="fas fa-chart-line"></i> 18% Energy Reduction · ₹2.4Cr Saved/yr</div>
+            <div class="project-year">2023–2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img-placeholder">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="30" stroke="rgba(255,107,53,0.3)" stroke-width="1.5" fill="none"/><circle cx="40" cy="40" r="20" stroke="rgba(255,107,53,0.2)" stroke-width="1" fill="none"/><circle cx="40" cy="40" r="10" fill="rgba(255,107,53,0.08)" stroke="rgba(255,107,53,0.3)" stroke-width="1"/></svg>
+      </div>
+      <div class="project-body">
+        <div class="project-tag" style="color:var(--accent2);">Industrial · PROJECT_02</div>
+        <h3>Cold Chain Facility — NH₃ Refrigeration</h3>
+        <p>Engineered a 2,800 TR ammonia refrigeration system for a multi-temperature food processing plant. Replaced legacy R-22 system with low-GWP ammonia cycles, cutting refrigerant costs by 40%.</p>
+        <div class="project-meta">
+          <div class="project-result" style="color:var(--accent2);"><i class="fas fa-snowflake"></i> 40% Cost Reduction</div>
+          <div class="project-year">2022</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img-placeholder">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="20" width="60" height="45" rx="3" stroke="rgba(200,169,110,0.3)" stroke-width="1.5" fill="none"/><line x1="10" y1="32" x2="70" y2="32" stroke="rgba(200,169,110,0.3)" stroke-width="1"/><rect x="20" y="40" width="12" height="16" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.3)" stroke-width="1"/><rect x="44" y="40" width="12" height="16" fill="rgba(200,169,110,0.08)" stroke="rgba(200,169,110,0.3)" stroke-width="1"/></svg>
+      </div>
+      <div class="project-body">
+        <div class="project-tag" style="color:var(--gold);">Healthcare · PROJECT_03</div>
+        <h3>Hospital MEP — Clean Room & HEPA Systems</h3>
+        <p>Designed HVAC systems for 3 sterile operating theatres and ICU floors, achieving ISO Class 5 cleanliness standards. Integrated BMS for real-time pressure differential monitoring.</p>
+        <div class="project-meta">
+          <div class="project-result" style="color:var(--gold);"><i class="fas fa-hospital"></i> ISO Class 5 Certified</div>
+          <div class="project-year">2021–2022</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-img-placeholder">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 10 L70 65 L10 65 Z" stroke="rgba(0,220,180,0.3)" stroke-width="1.5" fill="rgba(0,220,180,0.05)"/><circle cx="40" cy="35" r="8" stroke="rgba(0,220,180,0.4)" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      <div class="project-body">
+        <div class="project-tag">Sustainability · PROJECT_04</div>
+        <h3>LEED Platinum Retrofit — Office Complex</h3>
+        <p>Led MEP retrofit of a 1990s office building targeting LEED Platinum. Implemented solar thermal, geothermal heat pump, and demand-controlled ventilation — exceeding energy targets by 12%.</p>
+        <div class="project-meta">
+          <div class="project-result"><i class="fas fa-leaf"></i> LEED Platinum · 52% Energy Saved</div>
+          <div class="project-year">2023</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE TIMELINE -->
+<section id="experience">
+  <div class="section-label reveal">04 / Career</div>
+  <h2 class="section-title reveal">Professional <em style="font-style:italic;color:var(--accent);">Timeline</em></h2>
+
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2022 – Present</div>
+      <div class="tl-role">Senior MEP Design Engineer</div>
+      <div class="tl-org">ABC Engineering Consultants · Kathmandu, NP</div>
+      <div class="tl-desc">Leading HVAC and MEP design for large-scale commercial and industrial projects across South Asia. Managing cross-disciplinary BIM coordination, client presentations, and junior engineer mentoring.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">HVAC</span><span class="tl-tag">BIM</span><span class="tl-tag">Team Lead</span><span class="tl-tag">VRF</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2019 – 2022</div>
+      <div class="tl-role">Mechanical Design Engineer</div>
+      <div class="tl-org">XYZ Infrastructure Ltd. · Pokhara, NP</div>
+      <div class="tl-desc">Designed HVAC, plumbing, and fire protection systems for hospitality and healthcare sectors. Developed energy models for 12 projects, achieving an average 22% reduction in HVAC energy consumption.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">Energy Modeling</span><span class="tl-tag">Healthcare</span><span class="tl-tag">Hospitality</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2017 – 2019</div>
+      <div class="tl-role">Junior HVAC Engineer</div>
+      <div class="tl-org">MEP Solutions Pvt. Ltd. · Pokhara, NP</div>
+      <div class="tl-desc">Assisted in load calculations, equipment selection, and duct layouts. Gained hands-on commissioning experience across residential and light commercial projects.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">Load Calc</span><span class="tl-tag">AutoCAD</span><span class="tl-tag">Commissioning</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2013 – 2017</div>
+      <div class="tl-role">B.E. Mechanical Engineering</div>
+      <div class="tl-org">Institute of Engineering · Pulchowk Campus</div>
+      <div class="tl-desc">Graduated with distinction. Thesis: "Thermal Performance Analysis of Natural Ventilation in High-Rise Buildings." Active member of ASHRAE Student Chapter.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">Thesis: Natural Ventilation</span><span class="tl-tag">ASHRAE</span><span class="tl-tag">Distinction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" style="background:var(--bg2);">
+  <div class="section-label reveal">05 / Research</div>
+  <h2 class="section-title reveal">Publications &<br><em style="font-style:italic;color:var(--accent);">Conference Papers</em></h2>
+
+  <div class="research-list">
+    <div class="research-item reveal">
+      <div class="research-num">01</div>
+      <div class="research-content">
+        <h4>Efficiency Analysis of Low-GWP Refrigerants in Transcritical CO₂ Systems</h4>
+        <div class="research-venue">International Journal of Refrigeration · Vol. 142, 2025</div>
+        <div class="research-abstract">Comparative analysis of R-290, R-32, and CO₂ in transcritical commercial refrigeration. COP improvements of 12–18% demonstrated under tropical climate conditions compared to HFC alternatives.</div>
+        <div class="research-ref"><i class="fas fa-link"></i> REF: IJR-8820 &nbsp;·&nbsp; DOI: 10.1016/j.ijrefrig.2025.xxxx</div>
+      </div>
+    </div>
+    <div class="research-item reveal">
+      <div class="research-num">02</div>
+      <div class="research-content">
+        <h4>Integrating Machine Learning with HVAC Variable Speed Drives for Predictive Control</h4>
+        <div class="research-venue">Global Energy Systems Forum, Dubai · 2024</div>
+        <div class="research-abstract">Proposed an ML-driven PID replacement for VSD control in AHU systems. Field trials showed a 14% additional energy reduction versus conventional setpoint schedules in a 10-storey office building.</div>
+        <div class="research-ref"><i class="fas fa-link"></i> REF: GES-4412 &nbsp;·&nbsp; Conference Proceedings ISBN: 978-x-xxxx</div>
+      </div>
+    </div>
+    <div class="research-item reveal">
+      <div class="research-num">03</div>
+      <div class="research-content">
+        <h4>CFD Modeling of Airflow Distribution in Hospital Clean Rooms</h4>
+        <div class="research-venue">Asian Journal of Mechanical Engineering · 2023</div>
+        <div class="research-abstract">Ansys Fluent simulation study of unidirectional airflow patterns in ISO Class 5 surgical suites. Developed optimized diffuser placement guidelines reducing particle count by 30%.</div>
+        <div class="research-ref"><i class="fas fa-link"></i> REF: AJME-2203</div>
+      </div>
+    </div>
+    <div class="research-item reveal">
+      <div class="research-num">04</div>
+      <div class="research-content">
+        <h4>Thermal Performance of Natural Ventilation Strategies in South Asian High-Rise Buildings</h4>
+        <div class="research-venue">B.E. Thesis · Pulchowk Campus, 2017</div>
+        <div class="research-abstract">Simulation-based analysis of stack-effect and cross-ventilation in 15+ storey residential towers in hot-humid climates. Proposed passive design guidelines reducing mechanical cooling loads by up to 26%.</div>
+        <div class="research-ref"><i class="fas fa-graduation-cap"></i> Distinction Award · Available on request</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label reveal">06 / Credentials</div>
+  <h2 class="section-title reveal">Certifications &<br><em style="font-style:italic;color:var(--accent);">Professional Memberships</em></h2>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+      <div>
+        <div class="cert-name">LEED AP Building Design + Construction</div>
+        <div class="cert-org">U.S. Green Building Council · 2021</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-award"></i></div>
+      <div>
+        <div class="cert-name">Certified Energy Auditor (CEA)</div>
+        <div class="cert-org">Association of Energy Engineers · 2022</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-shield-halved"></i></div>
+      <div>
+        <div class="cert-name">ASHRAE Membership</div>
+        <div class="cert-org">American Society of Heating, Refrigerating & AC Engineers</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-fire"></i></div>
+      <div>
+        <div class="cert-name">NFPA Fire Protection Design</div>
+        <div class="cert-org">National Fire Protection Association · 2020</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-users"></i></div>
+      <div>
+        <div class="cert-name">Nepal Engineers Association</div>
+        <div class="cert-org">Registered Professional Engineer · License #XXXXX</div>
+      </div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+      <div>
+        <div class="cert-name">Innovative Thermal Solution Award</div>
+        <div class="cert-org">Green Building Summit · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">07 / Connect</div>
+  <div class="contact-layout">
+    <div class="contact-info reveal">
+      <h2 class="section-title" style="margin-bottom:1rem;">Let's Build<br><em style="font-style:italic;color:var(--accent);">Something.</em></h2>
+      <p>Open to consulting engagements, collaborative research, and full-time opportunities. Whether it's a complex MEP design challenge or an energy optimization project — I'd love to hear from you.</p>
+      <div class="contact-detail">
+        <div class="contact-row"><i class="fas fa-envelope"></i><a href="mailto:engineer@example.com">engineer@example.com</a></div>
+        <div class="contact-row"><i class="fas fa-phone"></i><span>+977 9800-000000</span></div>
+        <div class="contact-row"><i class="fas fa-location-dot"></i><span>Pokhara, Gandaki Pradesh, Nepal</span></div>
+        <div class="contact-row"><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></div>
+      </div>
+      <div class="social-row" style="margin-top:2rem;">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://researchgate.net" target="_blank"><i class="fab fa-researchgate"></i></a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Inquiry Type</label>
+          <select>
+            <option value="">Select a topic...</option>
+            <option>HVAC / MEP Design Consulting</option>
+            <option>Industrial Refrigeration</option>
+            <option>Energy Audit & Modeling</option>
+            <option>Research Collaboration</option>
+            <option>Full-time Opportunity</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project / Message Details</label>
+          <textarea placeholder="Describe your project, timeline, and any specific requirements..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="handleSubmit(this)">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+        <div id="formMsg" style="display:none;font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);margin-top:.5rem;text-align:center;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">// MSE.PORTFOLIO</div>
+  <div class="footer-note">&copy; 2026 · MECHANICAL SYSTEMS ENGINEER · POKHARA, NP</div>
+  <div class="social-row">
+    <a href="https://linkedin.com/in/yourprofile"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/yourprofile"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com/yourprofile"><i class="fab fa-instagram"></i></a>
+    <a href="https://researchgate.net"><i class="fab fa-researchgate"></i></a>
+  </div>
+</footer>
+
+<script>
+/* =============================================
+   CURSOR
+============================================= */
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+animRing();
+document.querySelectorAll('a,button,.project-card,.research-item,.cert-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='18px';cursor.style.height='18px';ring.style.width='52px';ring.style.height='52px';});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
+});
+
+/* =============================================
+   SCROLL REVEAL
+============================================= */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>observer.observe(el));
+
+/* =============================================
+   SKILL BARS
+============================================= */
+const skillObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skill-fill').forEach(bar=>{
+        bar.style.width = bar.dataset.width + '%';
+      });
+      skillObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const sb = document.getElementById('skillBars');
+if(sb) skillObs.observe(sb);
+
+/* =============================================
+   COUNTER ANIMATION
+============================================= */
+function animateCounter(el, target, suffix=''){
+  let current=0;
+  const step = target/60;
+  const timer = setInterval(()=>{
+    current = Math.min(current+step, target);
+    el.textContent = Math.floor(current) + suffix;
+    if(current >= target) clearInterval(timer);
+  }, 22);
+}
+const counterObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-target]').forEach(el=>{
+        animateCounter(el, parseInt(el.dataset.target), el.dataset.suffix||'+');
+      });
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.hero-stats').forEach(s=>counterObs.observe(s));
+
+/* =============================================
+   FORM HANDLER
+============================================= */
+function handleSubmit(btn){
+  const msg = document.getElementById('formMsg');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  btn.disabled = true;
+  setTimeout(()=>{
+    btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    btn.style.background = '#00a884';
+    msg.style.display = 'block';
+    msg.textContent = '✓ Thank you — I\'ll respond within 24 hours.';
+    setTimeout(()=>{
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      btn.disabled = false;
+      btn.style.background = '';
+      msg.style.display = 'none';
+    }, 4000);
+  }, 1600);
+}
+
+/* =============================================
+   ACTIVE NAV
+============================================= */
+const sections = document.querySelectorAll('section[id], footer');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY >= s.offsetTop - 200) current=s.id;});
+  navLinks.forEach(a=>{
+    a.style.color = a.getAttribute('href')==='#'+current ? 'var(--text)' : '';
+  });
+});
+</script>
+</body>
+</html>
